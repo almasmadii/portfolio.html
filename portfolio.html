@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blush: #F9F0ED;
+    --rose-pale: #F2E4DF;
+    --rose-mid: #E8C9C0;
+    --rose-tan: #C9938A;
+    --rose-deep: #9B5E57;
+    --mauve: #7A4A5A;
+    --dark: #2D1F22;
+    --muted: #7A6068;
+    --cream: #FDF8F6;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  body {
+    background: var(--blush);
+    color: var(--dark);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 52px 32px 100px;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rose-deep);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rose-deep); }
+
+  /* DECORATIVE LINE */
+  .deco-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rose-mid), transparent);
+    margin-bottom: 72px;
+  }
+
+  /* HERO */
+  .hero { margin-bottom: 90px; text-align: center; }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--rose-tan);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '—';
+    color: var(--rose-mid);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(52px, 9vw, 84px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    color: var(--dark);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--rose-deep);
+  }
+
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rose-tan);
+    margin-bottom: 28px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 420px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--mauve);
+    color: var(--blush);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .hero-cta:hover { background: var(--rose-deep); }
+
+  /* SECTION HEADER */
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose-tan);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+  }
+
+  h2 em { font-style: italic; color: var(--rose-deep); }
+
+  section { margin-bottom: 80px; }
+
+  .deco-divider {
+    text-align: center;
+    color: var(--rose-mid);
+    font-size: 18px;
+    letter-spacing: 8px;
+    margin: 64px 0;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .skill-card {
+    background: var(--cream);
+    border: 1px solid var(--rose-pale);
+    border-radius: 16px;
+    padding: 28px 22px 24px;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--rose-mid);
+    transform: translateY(-3px);
+  }
+
+  .skill-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--rose-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--rose-deep);
+  }
+
+  .skill-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .skill-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 14px;
+    justify-content: center;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    background: var(--rose-pale);
+    color: var(--rose-deep);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .project-item {
+    background: var(--cream);
+    border: 1px solid var(--rose-pale);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .project-item:hover {
+    border-color: var(--rose-tan);
+    background: var(--rose-pale);
+    transform: translateX(4px);
+  }
+
+  .project-num {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--rose-tan);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 12px;
+  }
+
+  .project-arrow {
+    font-size: 22px;
+    color: var(--rose-mid);
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .project-item:hover .project-arrow {
+    transform: translate(3px, -3px);
+    color: var(--rose-deep);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  .about-text p + p { margin-top: 16px; }
+
+  .about-stats { display: flex; flex-direction: column; gap: 8px; }
+
+  .stat-row {
+    background: var(--cream);
+    border: 1px solid var(--rose-pale);
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-radius: 12px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--rose-tan);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .stat-val {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--rose-deep);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--rose-pale);
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rose-deep);
+  }
+
+  .footer-links { display: flex; gap: 10px; }
+
+  .footer-links a {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    padding: 8px 16px;
+    border: 1px solid var(--rose-mid);
+    border-radius: 20px;
+    transition: all 0.15s;
+  }
+
+  .footer-links a:hover {
+    background: var(--mauve);
+    border-color: var(--mauve);
+    color: var(--cream);
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 46px; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <span class="nav-name">Alma Alsmadi</span>
+    <ul class="nav-links">
+      <li><a href="#work">work</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="deco-line"></div>
+
+  <div class="hero">
+    <div class="hero-eyebrow">open to opportunities</div>
+    <h1>hello, i'm <em>Alma.</em></h1>
+    <div class="hero-subtitle">i make data make sense.</div>
+    <p class="hero-desc">
+      Aspiring data analyst who loves digging into messy datasets and pulling out something meaningful. Python, SQL, and a lot of curiosity.
+    </p>
+    <a href="#work" class="hero-cta">see my work ↓</a>
+  </div>
+
+  <section id="skills">
+    <div class="section-header">
+      <div class="section-label">what i work with</div>
+      <h2>skills &amp; <em>tools</em></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-name">Python</div>
+        <div class="skill-desc">Data wrangling, analysis, and visualization.</div>
+        <div class="skill-tags">
+          <span class="tag">pandas</span>
+          <span class="tag">numpy</span>
+          <span class="tag">matplotlib</span>
+          <span class="tag">seaborn</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">SQL</div>
+        <div class="skill-desc">Querying databases and surfacing real answers.</div>
+        <div class="skill-tags">
+          <span class="tag">joins</span>
+          <span class="tag">aggregations</span>
+          <span class="tag">PL/SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        
+        <div class="skill-name">Excel</div>
+        <div class="skill-desc">Dashboards, pivots, and fast exploratory work.</div>
+        <div class="skill-tags">
+          <span class="tag">pivot tables</span>
+          <span class="tag">VLOOKUP</span>
+          <span class="tag">charts</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Statistics</div>
+        <div class="skill-desc">Hypothesis testing, regression analysis, and probability distributions.</div>
+        <div class="skill-tags">
+          <span class="tag">propabilities</span>
+          <span class="tag">mean</span>
+          <span class="tag">averages</span>
+          <span class="tag">forecasting</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">PowerBI</div>
+        <div class="skill-desc">currently self-directed in learning the PL-300 Microsoft PowerBI </div>
+        <div class="skill-tags">
+          <span class="tag">transforming</span>
+          <span class="tag">data modeling</span>
+          <span class="tag">reporting</span>
+          <span class="tag">dashboarding</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Azure</div>
+        <div class="skill-desc">Taking the microsoft AZ-900 Azure exam this july</div>
+        <div class="skill-tags">
+          <span class="tag">core azure services</span>
+          <span class="tag">iass,saas,paas</span>
+          <span class="tag">cloud concepts</span>
+          <span class="tag">cost management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="deco-divider">· · ·</div>
+
+  <section id="work">
+    <div class="section-header">
+      <div class="section-label">things i've built</div>
+      <h2>selected <em>projects</em></h2>
+    </div>
+    <div class="projects-list">
+      <div class="project-item" href="https://github.com/almasmadii/Programming-Languages-Data-Visualization-.git">
+        <div>
+          <div class="project-num">01 / project</div>
+          <div class="project-name">Programming Languages Exploratory Analysis</div>
+          <div class="project-desc">About
+           took a dataset file that measured the popularity of programming languages based off of its number of posts in StackOverflow and visualized their trends over the years with google collab.</div>
+          <div class="project-stack">
+            <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">matplotlib</span><span class="tag">numpy</span>
+          </div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+      <div class="project-item" href="https://github.com/almasmadii/Space-Missions-Exploratory-Analysis.git">
+        <div>
+          <div class="project-num">02 / project</div>
+          <div class="project-name">Space Missions Exploratory Analysis</div>
+          <div class="project-desc">took real life data sets about space missions in history and visually analyzed different aspects using python libraries such as numpy,plotly,seaborn etc.</div>
+          <div class="project-stack">
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">seaborn</span>
+          </div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+      <div class="project-item" href="https://github.com/almasmadii/pdf_to_audiobook.git">
+        <div>
+          <div class="project-num">03 / project</div>
+          <div class="project-name">Pdf to Audio book Converter</div>
+          <div class="project-desc">This Python project takes a PdfReader function from the pypdf library to transform a pdf file from written text into an audio narration.</div>
+          <div class="project-stack">
+            <span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">pandas</span>
+          </div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+      <div class="project-item" href="https://github.com/almasmadii/apt_hunting_automation.git">
+        <div>
+          <div class="project-num">04 / project</div>
+          <div class="project-name">Web Scraping and Data Entry Capstone Project</div>
+          <div class="project-desc">Python scraper + Selenium automation for apartment hunting — pulls listings and logs them to Google Sheets.</div>
+          <div class="project-stack">
+            <span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">selenium</span>
+          </div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="deco-divider">· · ·</div>
+
+  <section id="about">
+    <div class="section-header">
+      <div class="section-label">a little about me</div>
+      <h2>the <em>person</em> behind the data</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a 4th year MIS student at The Hashemite University with a 3.80 GPA.
+        I keep getting drawn back to data — there's something so satisfying about taking a messy spreadsheet and finding the story hidden inside it.</p>
+        <p>Most of my time goes into Python projects driven by genuine curiosity. I'm looking for an opportunity where I can keep learning,developing and actually contribute something real.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-row">
+          <span class="stat-label">projects built</span>
+          <span class="stat-val">4+</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">tools in the kit</span>
+          <span class="stat-val">3</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">currently</span>
+          <span class="stat-val" style="font-size:15px; font-family: var(--sans); color: var(--muted); font-weight: 300;">studying ✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-name">Alma Smadi.</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alma-alsmadi-a26288256/?skipRedirect=true">LinkedIn</a>
+      <a href="https://github.com/almasmadii">GitHub</a>
+      <a href="mailto:almasmadi59@gmail.com">Email</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

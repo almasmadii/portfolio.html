@@ -180,7 +180,7 @@
   h2 em { font-style: italic; color: var(--rose-deep); }
 
   section { margin-bottom: 80px; }
-
+  a{ text-decoration: none; color: var(--rose-deep); }
   .deco-divider {
     text-align: center;
     color: var(--rose-mid);
@@ -272,6 +272,7 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
   }
 
   .project-item:hover {
@@ -511,34 +512,37 @@
       <div class="section-label">things i've built</div>
       <h2>selected <em>projects</em></h2>
     </div>
+
     <div class="projects-list">
-      <div class="project-item" href="https://github.com/almasmadii/Programming-Languages-Data-Visualization-.git">
-        <div>
+    <div class="project-item">
+      <div>
           <div class="project-num">01 / project</div>
-          <div class="project-name">Programming Languages Exploratory Analysis</div>
+          <div class="project-name"><a href="https://github.com/almasmadii/Programming-Languages-Data-Visualization-.git">Programming Languages Exploratory Analysis</a></div>
           <div class="project-desc">About
            took a dataset file that measured the popularity of programming languages based off of its number of posts in StackOverflow and visualized their trends over the years with google collab.</div>
           <div class="project-stack">
             <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">matplotlib</span><span class="tag">numpy</span>
           </div>
-        </div>
+        </div>  
         <span class="project-arrow">↗</span>
       </div>
-      <div class="project-item" href="https://github.com/almasmadii/Space-Missions-Exploratory-Analysis.git">
-        <div>
-          <div class="project-num">02 / project</div>
-          <div class="project-name">Space Missions Exploratory Analysis</div>
-          <div class="project-desc">took real life data sets about space missions in history and visually analyzed different aspects using python libraries such as numpy,plotly,seaborn etc.</div>
-          <div class="project-stack">
-            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">seaborn</span>
-          </div>
+
+    <div class="project-item">
+      <div>
+        <div class="project-num">02 / project</div>
+        <div class="project-name"><a href="https://github.com/almasmadii/Space-Missions-Exploratory-Analysis.git"> Space Missions Exploratory Analysis </a></div>
+        <div class="project-desc">took real life data sets about space missions in history and visually analyzed different aspects using python libraries such as numpy,plotly,seaborn etc.</div>
+        <div class="project-stack">
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">seaborn</span>
         </div>
-        <span class="project-arrow">↗</span>
       </div>
-      <div class="project-item" href="https://github.com/almasmadii/pdf_to_audiobook.git">
+        <span class="project-arrow">↗</span>
+    </div>
+
+      <div class="project-item">
         <div>
           <div class="project-num">03 / project</div>
-          <div class="project-name">Pdf to Audio book Converter</div>
+          <div class="project-name"><a href="https://github.com/almasmadii/pdf_to_audiobook.git">Pdf to Audio book Converter</a></div>
           <div class="project-desc">This Python project takes a PdfReader function from the pypdf library to transform a pdf file from written text into an audio narration.</div>
           <div class="project-stack">
             <span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">pandas</span>
@@ -546,10 +550,11 @@
         </div>
         <span class="project-arrow">↗</span>
       </div>
-      <div class="project-item" href="https://github.com/almasmadii/apt_hunting_automation.git">
+
+    <div class="project-item">
         <div>
           <div class="project-num">04 / project</div>
-          <div class="project-name">Web Scraping and Data Entry Capstone Project</div>
+          <div class="project-name"><a href="https://github.com/almasmadii/apt_hunting_automation.git">Web Scraping and Data Entry Capstone Project></a></div>
           <div class="project-desc">Python scraper + Selenium automation for apartment hunting — pulls listings and logs them to Google Sheets.</div>
           <div class="project-stack">
             <span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">selenium</span>
@@ -559,9 +564,8 @@
       </div>
     </div>
   </section>
-
+  
   <div class="deco-divider">· · ·</div>
-
   <section id="about">
     <div class="section-header">
       <div class="section-label">a little about me</div>

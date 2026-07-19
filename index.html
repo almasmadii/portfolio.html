@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+  
   :root {
     --blush: #F9F0ED;
     --rose-pale: #F2E4DF;
@@ -404,12 +404,39 @@
     color: var(--cream);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 600px) 
+  {
+    /*laptops, pcs*/
     .skills-grid { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; }
     h1 { font-size: 46px; }
     footer { flex-direction: column; gap: 20px; text-align: center; }
   }
+  @media (max-width: 768px) 
+  {
+  /* Tablet and smaller */
+  .projects-list {
+    flex-direction: column; /* if it was a row layout, stack it */
+  }
+  
+  .project-item {
+    width: 100%;
+    padding: 15px;
+  }
+  }
+
+  @media (max-width: 480px) 
+  {
+  /* Phones specifically */
+    body {
+      font-size: 14px;
+    }
+  
+    .project-name {
+     font-size: 18px;
+    }
+  }
+
 </style>
 </head>
 <body>
